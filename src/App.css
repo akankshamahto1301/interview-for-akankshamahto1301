@@ -1,24 +1,32 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+@import "tailwindcss";
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.status-success {
+  @apply bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-medium;
 }
 
-@keyframes logo-spin {
+.status-failed {
+  @apply bg-red-100 text-red-800 px-2 py-1 rounded text-xs font-medium;
+}
+
+.status-upcoming {
+  @apply bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs font-medium;
+}
+
+.modal-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 50;
+}
+
+/* Custom 360-degree spin animation for loader image */
+@keyframes spin-360 {
   from {
     transform: rotate(0deg);
   }
@@ -27,16 +35,21 @@
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+.animate-spin-360 {
+  animation: spin-360 1s linear infinite;
+}
+
+/* Keep the default spin for other elements */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
 
-.card {
-  padding: 2em;
+.animate-spin {
+  animation: spin 1s linear infinite;
 }
 
-.read-the-docs {
-  color: #888;
-}
